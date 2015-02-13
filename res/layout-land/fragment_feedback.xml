@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- copied logic for focusable and clickable from portrait layout... the fragment_feedback.xml for details -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feedback_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    	android:focusableInTouchMode="true"
+		android:focusable="true"
+		android:clickable="true"
+    android:orientation="vertical" 
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight=".2"
+		    android:orientation="vertical">
+		</LinearLayout>
+		    
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="match_parent"
+		    android:layout_weight=".6"
+		    android:orientation="vertical"
+		    android:gravity="center">
+		    
+	        <TextView 
+	            android:id="@+id/mood_value"
+	            android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"    
+			        android:focusableInTouchMode="true"
+				    android:focusable="true"
+				    android:clickable="true"
+		        android:padding="10dp"
+		        style="@android:style/TextAppearance.Medium"
+		        android:textSize="30sp"
+		        android:textStyle="bold"
+		        android:text="5" />
+	        
+		    <SeekBar
+		        android:id="@+id/mood_slider"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:progress="5"
+		        android:max="9" />
+		    
+		</LinearLayout>
+		
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight=".2"
+		    android:orientation="vertical">
+		</LinearLayout>
+		
+	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".4" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight=".6"
+            android:background="#000000"
+            android:orientation="horizontal"
+            android:padding="1dp" >
+
+            <EditText
+                android:id="@+id/comment_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+		         	android:focusableInTouchMode="true"
+				    android:focusable="true"
+				    android:clickable="true"
+                android:padding="3dp"
+                android:background="#ffffff"
+                android:gravity="top|start"
+                android:hint="@string/comment_hint" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight=".4"
+            android:orientation="vertical" >
+
+			<RadioGroup
+			    android:id="@+id/private_radiogroup"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:gravity="center_horizontal" >
+		
+		        <RadioButton
+		            android:id="@+id/private_radio"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:checked="true"
+		            android:text="@string/private_radio" />
+		
+		        <RadioButton
+		            android:id="@+id/public_radio"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/public_radio" />
+		    </RadioGroup>
+		
+			<Button
+		        android:id="@+id/feedback_submit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:text="@string/submit_button" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+		
+</LinearLayout>

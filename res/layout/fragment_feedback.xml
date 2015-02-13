@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+from: http://stackoverflow.com/questions/6677969/tap-outside-edittext-to-lose-focus
+
+setting:
+	android:focusableInTouchMode="true"
+	android:focusable="true"
+	android:clickable="true"
+
+...on everything for onFocusChangeListener code on EditText (in FeedbackFragment)
+
+however, the radio buttons go a bit funny - they get focus then you click them, ie 2 stages to select,
+so... they just have click listeners to close the keyboard
+
+same goes for SubmitButton
+ -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feedback_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+		android:focusableInTouchMode="true"
+		android:focusable="true"
+		android:clickable="true"
+    android:orientation="vertical" 
+    android:weightSum="1" >
+
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight=".3"
+	    android:orientation="horizontal" >
+
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight=".2"
+		    android:orientation="vertical">
+		</LinearLayout>
+		    
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="match_parent"
+		    android:layout_weight=".6"
+		    android:orientation="vertical"
+		    android:gravity="center">
+		    
+	        <TextView 
+	            android:id="@+id/mood_value"
+	            android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"    
+			        android:focusableInTouchMode="true"
+				    android:focusable="true"
+				    android:clickable="true"
+		        android:padding="10dp"
+		        style="@android:style/TextAppearance.Medium"
+		        android:textSize="30sp"
+		        android:textStyle="bold"
+		        android:text="5" />
+	        
+		    <SeekBar
+		        android:id="@+id/mood_slider"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:progress="5"
+		        android:max="9" />
+		    
+		</LinearLayout>
+		
+        <LinearLayout
+		    android:layout_width="0dp"
+		    android:layout_height="wrap_content"
+		    android:layout_weight=".2"
+		    android:orientation="vertical">
+		</LinearLayout>
+		
+	</LinearLayout>
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight=".2"
+	    android:orientation="horizontal"
+	    android:layout_margin="5dp"
+	    android:background="#000000"
+	    android:padding="1dp" >
+		
+		<EditText
+	        android:id="@+id/comment_edittext"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	         	android:focusableInTouchMode="true"
+			    android:focusable="true"
+			    android:clickable="true"
+	        android:gravity="top|start"
+	        android:background="#ffffff"
+	        android:padding="3dp"
+	        android:hint="@string/comment_hint" />
+		
+	</LinearLayout>
+
+	<RadioGroup
+	    android:id="@+id/private_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"		
+        android:orientation="horizontal"
+        android:gravity="center_horizontal" >
+
+        <RadioButton
+            android:id="@+id/private_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/private_radio" />
+
+        <RadioButton
+            android:id="@+id/public_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/public_radio" />
+    </RadioGroup>
+
+	<Button
+        android:id="@+id/feedback_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/submit_button" />
+
+		
+</LinearLayout>

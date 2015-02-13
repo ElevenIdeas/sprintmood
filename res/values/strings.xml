@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SprintMood</string>
+    <string name="action_settings">Settings</string>
+	<string name="title_activity_settings">Settings</string>
+    
+    <string name="pref_apikey_title">Api Key</string>
+    <string name="pref_apikey_key">apikey</string>
+    
+    
+    <string name="submit_button">Submit</string>
+    <string name="comment_hint">Any comments?</string>
+    <string name="private_radio">Private</string>
+    <string name="public_radio">Share</string>
+    
+</resources>
