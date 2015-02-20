@@ -11,7 +11,7 @@ public class Feedback {
 		mSprintUserId = 3037;
 		mScore = 5;
 		mComment = "";
-		mIsPrivate = true;
+		mIsPrivate = false;
 		
 	}
 

@@ -406,7 +406,13 @@ public class FeedbackFragment extends Fragment {
 			
 			//Toast.makeText(getActivity(), "submit complete", Toast.LENGTH_SHORT).show();
 			//TODO: update SubmittedActivity
-			((TextView) SubmittedActivity.activity.findViewById(R.id.submit_status_text)).setText("submitted");
+			try 
+			{
+				((TextView) SubmittedActivity.activity.findViewById(R.id.submit_status_text)).setText("submitted");
+			} 
+			catch (Exception e) {
+			    Log.e(LOG_TAG, "Error ", e);
+			} 
 			
 			super.onPostExecute(result);
 		}

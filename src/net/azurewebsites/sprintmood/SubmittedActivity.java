@@ -2,6 +2,7 @@ package net.azurewebsites.sprintmood;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 public class SubmittedActivity extends FragmentActivity {
 
+	private static String sendStatus = "(sending...)";
+	
 	// from: http://stackoverflow.com/questions/9723106/get-activity-instance
 	public static Activity activity = null; 
 	
@@ -21,13 +24,23 @@ public class SubmittedActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_submitted);
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		else {
+			sendStatus = savedInstanceState.getString("Status");
+		}
 		
 		activity = this; 
 		
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+	   super.onSaveInstanceState(outState);
+	   outState.putString("Status", (String) ((TextView) findViewById(R.id.submit_status_text)).getText());
 	}
 
 	@Override
@@ -72,11 +85,11 @@ public class SubmittedActivity extends FragmentActivity {
 			}
 			else {
 				submitStr = "oooops - something's wrong";
+				sendStatus = "";
 			}
 			((TextView) rootView.findViewById(R.id.submitted_text)).setText(submitStr);
-			((TextView) rootView.findViewById(R.id.submit_status_text)).setText("sending...");
-			
-			
+			((TextView) rootView.findViewById(R.id.submit_status_text)).setText(sendStatus);
+
 			return rootView;
 		}
 	}
