@@ -111,13 +111,13 @@ same goes for SubmitButton
             android:id="@+id/private_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="@string/private_radio" />
 
         <RadioButton
             android:id="@+id/public_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/public_radio" />
     </RadioGroup>
 

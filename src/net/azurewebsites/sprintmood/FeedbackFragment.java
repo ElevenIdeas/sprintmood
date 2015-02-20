@@ -18,6 +18,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FeedbackFragment extends Fragment {
 
@@ -213,6 +215,11 @@ public class FeedbackFragment extends Fragment {
 
 		SubmitFeedbackTask submitTask = new SubmitFeedbackTask();
 		submitTask.execute(params);
+		
+		//Toast.makeText(getActivity(), "submit started", Toast.LENGTH_SHORT).show();
+		//TODO: open SubmittedActivity
+		Intent intent = new Intent(getActivity(), SubmittedActivity.class).putExtra(Intent.EXTRA_TEXT, params[2] + ": " + params[3]);
+		startActivity(intent);
 		
 		return;
 	}
@@ -396,7 +403,11 @@ public class FeedbackFragment extends Fragment {
 		
 		@Override
 		protected void onPostExecute(String result) {
-
+			
+			//Toast.makeText(getActivity(), "submit complete", Toast.LENGTH_SHORT).show();
+			//TODO: update SubmittedActivity
+			((TextView) SubmittedActivity.activity.findViewById(R.id.submit_status_text)).setText("submitted");
+			
 			super.onPostExecute(result);
 		}
 	
