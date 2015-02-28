@@ -8,6 +8,14 @@
         android:minSdkVersion="10"
         android:targetSdkVersion="21" />
 
+    <!-- 
+    instrumentation section (and uses-library in application) added to make unit tests work 
+    from: http://stackoverflow.com/questions/1009970/android-eclipse-plugin-instrumentation-test-runner-not-specified
+    -->
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+	    android:targetPackage="net.azurewebsites.sprintmood"
+	    android:label="WhereDoesThisLabelShowUp" />
+    
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,6 +23,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" /> <!-- added for unit tests - see note above -->
         <activity
             android:name=".FeedbackActivity"
             android:label="@string/app_name" >

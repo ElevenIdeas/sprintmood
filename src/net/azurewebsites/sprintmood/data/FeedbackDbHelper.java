@@ -32,7 +32,7 @@ public class FeedbackDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
     private static final int DATABASE_VERSION = 1;
 
-    static final String DATABASE_NAME = "feedback.db";
+    public static final String DATABASE_NAME = "feedback.db";
 
     public FeedbackDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -75,7 +75,7 @@ public class FeedbackDbHelper extends SQLiteOpenHelper {
                 FeedbackSubmitted.COLUMN_APPLIES_TO_TIME + " INTEGER NOT NULL, " +
 				FeedbackSubmitted.COLUMN_SCORE + " INT NOT NULL, " +
 				FeedbackSubmitted.COLUMN_COMMENT + " TEXT NOT NULL, " +
-				FeedbackSubmitted.COLUMN_IS_PRIVATE + " INT NOT NULL;";
+				FeedbackSubmitted.COLUMN_IS_PRIVATE + " INT NOT NULL);";
 
         sqLiteDatabase.execSQL(SQL_CREATE_FEEDBACK_SUBMITTED_TABLE);
 
