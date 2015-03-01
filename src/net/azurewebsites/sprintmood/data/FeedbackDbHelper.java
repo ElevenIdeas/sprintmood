@@ -50,7 +50,7 @@ public class FeedbackDbHelper extends SQLiteOpenHelper {
 
                 // the ID of the location entry associated with this weather data
                 FeedbackCache.COLUMN_FEEDBACK_ID + " INTEGER NOT NULL, " +
-                FeedbackCache.COLUMN_APPLIES_TO_TIME + " INTEGER NOT NULL, " +
+                FeedbackCache.COLUMN_APPLIES_TO_TIME + " TEXT NOT NULL, " +
                 FeedbackCache.COLUMN_SPRINTUSER_ID + " INTEGER NOT NULL," +
 
                 FeedbackCache.COLUMN_SCORE + " INT NOT NULL, " +
@@ -72,7 +72,7 @@ public class FeedbackDbHelper extends SQLiteOpenHelper {
                 FeedbackSubmitted._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
 
                 // the ID of the location entry associated with this weather data
-                FeedbackSubmitted.COLUMN_APPLIES_TO_TIME + " INTEGER NOT NULL, " +
+                FeedbackSubmitted.COLUMN_APPLIES_TO_TIME + " TEXT NOT NULL, " +
 				FeedbackSubmitted.COLUMN_SCORE + " INT NOT NULL, " +
 				FeedbackSubmitted.COLUMN_COMMENT + " TEXT NOT NULL, " +
 				FeedbackSubmitted.COLUMN_IS_PRIVATE + " INT NOT NULL);";

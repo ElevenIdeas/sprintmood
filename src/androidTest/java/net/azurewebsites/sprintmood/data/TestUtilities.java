@@ -15,6 +15,9 @@ import androidTest.java.net.azurewebsites.sprintmood.utils.PollingCheck;
 import net.azurewebsites.sprintmood.data.FeedbackContract;
 import net.azurewebsites.sprintmood.data.FeedbackDbHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,7 +28,7 @@ import java.util.Set;
  */
 public class TestUtilities extends AndroidTestCase {
     static final String TEST_LOCATION = "99705";
-    static final long TEST_DATE = 1419033600L;  // December 20th, 2014
+    static final String TEST_DATE = "28 Feb 2015 11:08:02";  // December 20th, 2014
 
     static void validateCursor(String error, Cursor valueCursor, ContentValues expectedValues) {
         assertTrue("Empty cursor returned. " + error, valueCursor.moveToFirst());
@@ -70,10 +73,10 @@ public class TestUtilities extends AndroidTestCase {
     static ContentValues createFeedbackSubmittedValues() {
         // Create a new map of values, where column names are the keys
         ContentValues testValues = new ContentValues();
-        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_APPLIES_TO_TIME, TEST_LOCATION);
-        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_SCORE, "North Pole");
-        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_COMMENT, 64.7488);
-        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_IS_PRIVATE, 999999353 * 33333);
+        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_APPLIES_TO_TIME, new SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.UK).format(new Date())); 
+        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_SCORE, 9);
+        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_COMMENT, "got a db!");
+        testValues.put(FeedbackContract.FeedbackSubmitted.COLUMN_IS_PRIVATE, 0);
 
         return testValues;
     }

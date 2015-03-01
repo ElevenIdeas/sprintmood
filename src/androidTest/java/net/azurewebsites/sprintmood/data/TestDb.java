@@ -24,6 +24,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 import net.azurewebsites.sprintmood.data.FeedbackContract;
+import net.azurewebsites.sprintmood.data.FeedbackContract.FeedbackCache;
 import net.azurewebsites.sprintmood.data.FeedbackContract.FeedbackSubmitted;
 import net.azurewebsites.sprintmood.data.FeedbackDbHelper;
 
@@ -144,7 +145,7 @@ public class TestDb extends AndroidTestCase {
         where you can uncomment out the "createNorthPoleLocationValues" function.  You can
         also make use of the ValidateCurrentRecord function from within TestUtilities.
     */
-    public void testLocationTable() {
+    public void testFeedbackSubmittedTable() {
         // First step: Get reference to writable database
     	SQLiteDatabase db = new FeedbackDbHelper(mContext).getWritableDatabase();
     	
@@ -182,7 +183,7 @@ public class TestDb extends AndroidTestCase {
         where you can use the "createWeatherValues" function.  You can
         also make use of the validateCurrentRecord function from within TestUtilities.
      */
-    public void testWeatherTable() {
+    public void testFeedbackCacheTable() {
         // First insert the location, and then use the locationRowId to insert
         // the weather. Make sure to cover as many failure cases as you can.
 
@@ -192,21 +193,32 @@ public class TestDb extends AndroidTestCase {
         // and our testLocationTable can only return void because it's a test.
 
         // First step: Get reference to writable database
-
+    	SQLiteDatabase db = new FeedbackDbHelper(mContext).getWritableDatabase();
+    	
         // Create ContentValues of what you want to insert
         // (you can use the createWeatherValues TestUtilities function if you wish)
-
+    	ContentValues values = TestUtilities.createFeedbackCacheValues(88);
+    	
         // Insert ContentValues into database and get a row ID back
-
+    	long feedbackRowId = db.insert(FeedbackContract.FeedbackCache.TABLE_NAME, null, values);
+    	assertTrue(feedbackRowId != -1);
+    	
         // Query the database and receive a Cursor back
-
+    	Cursor cur = db.query(FeedbackCache.TABLE_NAME, null, null, null, null, null, null);
+    			
         // Move the cursor to a valid database row
-
+    	assertTrue("Error: Cannot get to first row of FeedbackCache", cur.moveToFirst());
+    	
         // Validate data in resulting Cursor with the original ContentValues
         // (you can use the validateCurrentRecord function in TestUtilities to validate the
         // query if you like)
-
+    	TestUtilities.validateCurrentRecord("Wrong values returned from FeedbackCache", cur, values);
+    	
+    	assertFalse("Error: More than one row in FeedbackCache", cur.moveToNext());
+    	
         // Finally, close the cursor and database
+    	cur.close();
+    	db.close();
     }
 
 
