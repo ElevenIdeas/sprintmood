@@ -16,6 +16,13 @@ so... they just have click listeners to close the keyboard
 same goes for SubmitButton
  -->
 
+<!-- 
+from: http://stackoverflow.com/questions/6007204/android-soft-keyboard-action-button
+
+imeOptions and inputType on EditTexts are needed to provide "done" button - won't work with multiline boxes 
+-->
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/feedback_fragment"
     android:layout_width="match_parent"
@@ -96,6 +103,8 @@ same goes for SubmitButton
 	        android:gravity="top|start"
 	        android:background="#ffffff"
 	        android:padding="3dp"
+	        android:inputType="text"
+			android:imeOptions="actionDone"
 	        android:hint="@string/comment_hint" />
 		
 	</LinearLayout>

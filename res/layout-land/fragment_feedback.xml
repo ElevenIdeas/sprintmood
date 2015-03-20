@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- copied logic for focusable and clickable from portrait layout... the fragment_feedback.xml for details -->
+<!-- copied logic for focusable and clickable from portrait layout... see fragment_feedback.xml for details -->
+<!-- copied logic for imeOptions and inputType on EditTexts from portrait layout... see fragment_feedback.xml for details -->
+
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/feedback_fragment"
@@ -87,6 +89,8 @@
                 android:padding="3dp"
                 android:background="#ffffff"
                 android:gravity="top|start"
+                android:inputType="text"
+                android:imeOptions="actionDone"
                 android:hint="@string/comment_hint" />
         </LinearLayout>
 
